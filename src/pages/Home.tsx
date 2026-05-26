@@ -85,7 +85,7 @@ export const Home = () => {
           <span className="font-sans text-sm uppercase tracking-[0.2em] text-gray-500">2024—2025</span>
         </div>
 
-        <div className="flex flex-col border-t-hairline">
+        <div className="flex flex-col">
           {[
             { title: 'Lumina Studio', category: 'Brand & Web', year: '2024' },
             { title: 'The Index', category: 'Editorial', year: '2024' },
@@ -95,14 +95,20 @@ export const Home = () => {
             <Link 
               key={idx} 
               to="/portfolio" 
-              className="brutalist-list-item group flex flex-col md:flex-row justify-between items-start md:items-center py-12 border-b-hairline hover:bg-white hover:text-black transition-colors px-6 -mx-6"
+              className="brutalist-list-item group flex flex-col md:flex-row justify-between items-start md:items-center py-12 border-b-hairline hover:bg-white hover:text-black transition-colors px-6 -mx-6 relative overflow-hidden"
             >
-              <h3 className="text-4xl md:text-6xl font-heading uppercase">{work.title}</h3>
-              <div className="flex gap-12 mt-4 md:mt-0 font-heading text-2xl uppercase tracking-widest text-gray-500 group-hover:text-gray-800">
+              <h3 className="text-4xl md:text-6xl font-heading uppercase relative z-10 group-hover:translate-x-8 transition-transform duration-500 ease-out">{work.title}</h3>
+              
+              {/* Center Reveal Image */}
+              <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-72 aspect-video opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-75 transition-all duration-500 ease-out z-0 pointer-events-none">
+                 <img src={idx % 2 === 0 ? "/images/agency_interior_1779797602811.png" : "/images/app_mockup_realistic_1779797619474.png"} alt="Project Preview" className="w-full h-full object-cover grayscale" />
+              </div>
+
+              <div className="flex gap-12 mt-4 md:mt-0 font-heading text-2xl uppercase tracking-widest text-gray-500 group-hover:text-gray-800 relative z-10 group-hover:-translate-x-8 transition-transform duration-500 ease-out">
                 <span>{work.category}</span>
                 <span>{work.year}</span>
               </div>
-              </Link>
+            </Link>
             ))}
           </div>
           
