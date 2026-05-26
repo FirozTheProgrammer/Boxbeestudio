@@ -8,10 +8,10 @@ export const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   const projects = [
-    { id: '01', title: 'Brand Identity', client: 'Lumina Studio', category: 'Design', aspect: 'aspect-[3/4]', type: 'Brand Identity & Web', img: '/images/ff_identity_mockup_1779810702990.png' },
-    { id: '02', title: 'E-Commerce', client: 'Aura', category: 'React', aspect: 'aspect-square', type: 'Creative Engineering', img: '/images/minimal_ecom_mockup_1779810739362.png' },
-    { id: '03', title: 'Editorial Site', client: 'The Index', category: 'Webflow', aspect: 'aspect-[4/3]', type: 'No-Code Development', img: '/images/editorial_os_mockup_1779810720630.png' },
-    { id: '04', title: 'Portfolio', client: 'Studio N', category: 'Framer', aspect: 'aspect-[3/4]', type: 'Framer Website', img: '/images/colorful_app_mockup_1779808535421.png' },
+    { id: '01', title: 'Brand Identity', client: 'Lumina Studio', category: 'Design', aspect: 'aspect-[3/4]', type: 'Brand Identity & Web', img: '/images/ff_identity_mockup_1779810702990.webp' },
+    { id: '02', title: 'E-Commerce', client: 'Aura', category: 'React', aspect: 'aspect-square', type: 'Creative Engineering', img: '/images/minimal_ecom_mockup_1779810739362.webp' },
+    { id: '03', title: 'Editorial Site', client: 'The Index', category: 'Webflow', aspect: 'aspect-[4/3]', type: 'No-Code Development', img: '/images/editorial_os_mockup_1779810720630.webp' },
+    { id: '04', title: 'Portfolio', client: 'Studio N', category: 'Framer', aspect: 'aspect-[3/4]', type: 'Framer Website', img: '/images/colorful_app_mockup_1779808535421.webp' },
   ];
 
   const filteredProjects = projects.filter(project => {

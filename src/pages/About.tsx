@@ -6,9 +6,9 @@ export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const team = [
-    { name: 'SARAH JENKINS', role: 'Design Director', img: '/images/colorful_workspace_1779808518609.png' },
-    { name: 'MARCUS CHEN', role: 'Lead Engineer', img: '/images/real_studio_app_1779795446201.png' },
-    { name: 'ELENA ROSTOVA', role: 'Art Director', img: '/images/workspace_realistic_1779797581487.png' },
+    { name: 'SARAH JENKINS', role: 'Design Director', img: '/images/colorful_workspace_1779808518609.webp' },
+    { name: 'MARCUS CHEN', role: 'Lead Engineer', img: '/images/real_studio_app_1779795446201.webp' },
+    { name: 'ELENA ROSTOVA', role: 'Art Director', img: '/images/workspace_realistic_1779797581487.webp' },
   ];
 
   useGSAP(() => {

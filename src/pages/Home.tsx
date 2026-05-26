@@ -33,12 +33,12 @@ export const Home = () => {
   const [hoveredProduct, setHoveredProduct] = useState<string>('01');
 
   const digitalProducts = [
-    { id: '01', name: 'FF IDENTITY', type: 'Framer', price: '$49', img: "/images/ff_identity_mockup_1779810702990.png" },
-    { id: '02', name: 'EDITORIAL OS', type: 'Webflow', price: '$79', img: "/images/editorial_os_mockup_1779810720630.png" },
-    { id: '03', name: 'MINIMAL E-COM', type: 'React', price: '$99', img: "/images/minimal_ecom_mockup_1779810739362.png" },
-    { id: '04', name: 'STUDIO PRO', type: 'Webflow', price: '$69', img: "/images/colorful_app_mockup_1779808535421.png" },
-    { id: '05', name: 'MONOCHROME', type: 'Framer', price: '$39', img: "/images/colorful_branding_1779808551322.png" },
-    { id: '06', name: 'AGENCY DARK', type: 'React', price: '$89', img: "/images/colorful_workspace_1779808518609.png" }
+    { id: '01', name: 'FF IDENTITY', type: 'Framer', price: '$49', img: "/images/ff_identity_mockup_1779810702990.webp" },
+    { id: '02', name: 'EDITORIAL OS', type: 'Webflow', price: '$79', img: "/images/editorial_os_mockup_1779810720630.webp" },
+    { id: '03', name: 'MINIMAL E-COM', type: 'React', price: '$99', img: "/images/minimal_ecom_mockup_1779810739362.webp" },
+    { id: '04', name: 'STUDIO PRO', type: 'Webflow', price: '$69', img: "/images/colorful_app_mockup_1779808535421.webp" },
+    { id: '05', name: 'MONOCHROME', type: 'Framer', price: '$39', img: "/images/colorful_branding_1779808551322.webp" },
+    { id: '06', name: 'AGENCY DARK', type: 'React', price: '$89', img: "/images/colorful_workspace_1779808518609.webp" }
   ];
 
   return (
@@ -74,7 +74,7 @@ export const Home = () => {
       {/* Hero Image */}
       <section className="w-full h-[60vh] md:h-[80vh] overflow-hidden border-b-hairline bg-gray-900">
         <img 
-          src="/images/realistic_studio_hero_1779808724537.png" 
+          src="/images/realistic_studio_hero_1779808724537.webp" 
           alt="Studio Interior" 
           className="hero-img w-full h-[120%] object-cover opacity-80"
         />
@@ -181,7 +181,7 @@ export const Home = () => {
         {/* Hero Image 2 */}
       <section className="w-full h-[60vh] overflow-hidden border-y-hairline bg-gray-900 mt-16">
         <img 
-          src="/images/realistic_desk_hero_1779808740043.png" 
+          src="/images/realistic_desk_hero_1779808740043.webp" 
           alt="Studio Mockup" 
           className="hero-img w-full h-[120%] object-cover opacity-80"
         />

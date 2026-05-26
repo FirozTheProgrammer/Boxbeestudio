@@ -7,12 +7,12 @@ export const Templates = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const templates = [
-    { id: 1, name: 'FF IDENTITY', type: 'Framer', price: '$49', img: '/images/ff_identity_mockup_1779810702990.png' },
-    { id: 2, name: 'EDITORIAL OS', type: 'Webflow', price: '$79', img: '/images/editorial_os_mockup_1779810720630.png' },
-    { id: 3, name: 'MINIMAL E-COM', type: 'React', price: '$99', img: '/images/minimal_ecom_mockup_1779810739362.png' },
-    { id: 4, name: 'STUDIO PRO', type: 'Webflow', price: '$69', img: '/images/colorful_app_mockup_1779808535421.png' },
-    { id: 5, name: 'MONOCHROME', type: 'Framer', price: '$39', img: '/images/colorful_branding_1779808551322.png' },
-    { id: 6, name: 'AGENCY DARK', type: 'React', price: '$89', img: '/images/colorful_workspace_1779808518609.png' },
+    { id: 1, name: 'FF IDENTITY', type: 'Framer', price: '$49', img: '/images/ff_identity_mockup_1779810702990.webp' },
+    { id: 2, name: 'EDITORIAL OS', type: 'Webflow', price: '$79', img: '/images/editorial_os_mockup_1779810720630.webp' },
+    { id: 3, name: 'MINIMAL E-COM', type: 'React', price: '$99', img: '/images/minimal_ecom_mockup_1779810739362.webp' },
+    { id: 4, name: 'STUDIO PRO', type: 'Webflow', price: '$69', img: '/images/colorful_app_mockup_1779808535421.webp' },
+    { id: 5, name: 'MONOCHROME', type: 'Framer', price: '$39', img: '/images/colorful_branding_1779808551322.webp' },
+    { id: 6, name: 'AGENCY DARK', type: 'React', price: '$89', img: '/images/colorful_workspace_1779808518609.webp' },
   ];
 
   const [selectedCategory, setSelectedCategory] = useState('All');
