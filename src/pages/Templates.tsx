@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 
 export const Templates = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const templates = [
     { id: 1, name: 'FF IDENTITY', type: 'Framer', price: '$49' },
@@ -16,24 +17,39 @@ export const Templates = () => {
 
   useGSAP(() => {
     gsap.fromTo(
-      ".template-card",
+      ".header-reveal",
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power2.out" }
+      { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power2.out" }
     );
+
+    cardRefs.current.forEach((card) => {
+      if(!card) return;
+      gsap.fromTo(card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+          }
+        }
+      );
+    });
   }, { scope: containerRef });
 
   return (
-    <div className="w-full bg-white pb-32" ref={containerRef}>
+    <div className="w-full flex flex-col items-center pb-32" ref={containerRef}>
       
-      {/* Header */}
-      <header className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-32 border-b-hairline flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-        <div>
-          <h1 className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-8">Digital Products</h1>
-          <h2 className="text-fluid-5xl font-serif italic leading-none text-black">
-            Premium Templates.
-          </h2>
-        </div>
-        <p className="text-sm text-gray-500 max-w-sm font-light">
+      {/* Brutalist Header */}
+      <header className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-32 pb-24 border-b-hairline flex flex-col">
+        <h1 className="header-reveal text-xl font-sans uppercase tracking-[0.2em] text-gray-500 mb-8">Digital Products</h1>
+        <h2 className="header-reveal text-fluid-7xl font-heading leading-none text-white uppercase">
+          Premium Templates
+        </h2>
+        <p className="header-reveal text-2xl font-sans text-gray-400 font-light max-w-2xl mt-12 uppercase tracking-widest leading-relaxed">
           A collection of high-end, meticulously crafted templates for Framer, Webflow, and React. Built on robust, scalable design systems.
         </p>
       </header>
@@ -42,31 +58,24 @@ export const Templates = () => {
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-12">
           
-          {templates.map((template) => (
-            <div key={template.id} className="template-card group cursor-pointer">
+          {templates.map((template, index) => (
+            <div key={template.id} ref={el => { if (el) cardRefs.current[index] = el; }} className="group cursor-pointer flex flex-col">
               {/* Minimalist Image Placeholder */}
-              <div className="w-full aspect-[4/5] bg-gray-50 border-hairline mb-6 relative overflow-hidden flex items-center justify-center">
-                 <div className="absolute inset-0 bg-gray-100 transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out z-0"></div>
+              <div className="w-full aspect-[4/5] border-hairline mb-6 relative overflow-hidden bg-gray-900 flex items-center justify-center">
+                 <img src={index % 2 === 0 ? "/images/agency_interior_1779797602811.png" : "/images/app_mockup_realistic_1779797619474.png"} alt={template.name} className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-out" />
                  
-                 <div className="relative z-10 w-3/4 aspect-square border-hairline bg-white shadow-sm flex flex-col p-4 transform group-hover:scale-95 transition-transform duration-700">
-                    <div className="w-full h-4 border-b-hairline mb-4 pb-2 flex justify-between">
-                       <span className="w-1/4 h-[2px] bg-gray-300"></span>
-                       <span className="w-1/4 h-[2px] bg-gray-300"></span>
-                    </div>
-                    <div className="flex-grow flex flex-col gap-2">
-                       <div className="w-full h-1/2 bg-gray-100"></div>
-                       <div className="w-3/4 h-1/4 bg-gray-100"></div>
-                    </div>
+                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/50 backdrop-blur-sm">
+                    <span className="text-white border-hairline px-8 py-4 font-heading text-3xl uppercase tracking-widest">Buy Now</span>
                  </div>
               </div>
 
               {/* Product Info */}
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start border-t-hairline pt-4">
                 <div>
-                  <h3 className="text-xl font-medium text-black mb-1 group-hover:text-gray-600 transition-colors">{template.name}</h3>
-                  <p className="text-xs text-gray-400 uppercase tracking-widest">{template.type} Template</p>
+                  <h3 className="text-3xl font-heading text-white uppercase group-hover:pl-4 transition-all duration-300">{template.name}</h3>
+                  <p className="text-lg font-heading text-gray-500 uppercase tracking-widest mt-2">{template.type} Template</p>
                 </div>
-                <div className="text-sm font-medium text-black bg-gray-50 px-3 py-1 border-hairline group-hover:bg-black group-hover:text-white transition-colors duration-300">
+                <div className="text-2xl font-heading text-white uppercase tracking-widest">
                   {template.price}
                 </div>
               </div>
