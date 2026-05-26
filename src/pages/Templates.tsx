@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -7,13 +7,20 @@ export const Templates = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const templates = [
-    { id: 1, name: 'FF IDENTITY', type: 'Framer', price: '$49' },
-    { id: 2, name: 'EDITORIAL OS', type: 'Webflow', price: '$79' },
-    { id: 3, name: 'MINIMAL E-COM', type: 'React', price: '$99' },
-    { id: 4, name: 'STUDIO PRO', type: 'Webflow', price: '$69' },
-    { id: 5, name: 'MONOCHROME', type: 'Framer', price: '$39' },
-    { id: 6, name: 'AGENCY DARK', type: 'React', price: '$89' },
+    { id: 1, name: 'FF IDENTITY', type: 'Framer', price: '$49', img: '/images/ff_identity_mockup_1779810702990.png' },
+    { id: 2, name: 'EDITORIAL OS', type: 'Webflow', price: '$79', img: '/images/editorial_os_mockup_1779810720630.png' },
+    { id: 3, name: 'MINIMAL E-COM', type: 'React', price: '$99', img: '/images/minimal_ecom_mockup_1779810739362.png' },
+    { id: 4, name: 'STUDIO PRO', type: 'Webflow', price: '$69', img: '/images/colorful_app_mockup_1779808535421.png' },
+    { id: 5, name: 'MONOCHROME', type: 'Framer', price: '$39', img: '/images/colorful_branding_1779808551322.png' },
+    { id: 6, name: 'AGENCY DARK', type: 'React', price: '$89', img: '/images/colorful_workspace_1779808518609.png' },
   ];
+
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const categories = ['All', 'React', 'Framer', 'Webflow'];
+
+  const filteredTemplates = selectedCategory === 'All' 
+    ? templates 
+    : templates.filter(t => t.type === selectedCategory);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -56,16 +63,36 @@ export const Templates = () => {
 
       {/* Product Gallery */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24">
+        {/* Category Filter */}
+        <div className="flex flex-wrap items-center gap-4 mb-16 border-b-hairline pb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-8 py-3 border-hairline font-heading text-2xl uppercase transition-colors ${
+                selectedCategory === category
+                  ? 'bg-white text-black'
+                  : 'bg-transparent text-gray-500 hover:text-white hover:border-gray-500'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-12">
           
-          {templates.map((template, index) => (
+          {filteredTemplates.map((template, index) => (
             <div key={template.id} ref={el => { if (el) cardRefs.current[index] = el; }} className="group cursor-pointer flex flex-col">
               {/* Minimalist Image Placeholder */}
               <div className="w-full aspect-[4/5] border-hairline mb-6 relative overflow-hidden bg-gray-900 flex items-center justify-center">
-                 <img src={index % 2 === 0 ? "/images/agency_interior_1779797602811.png" : "/images/app_mockup_realistic_1779797619474.png"} alt={template.name} className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-out" />
+                 <img src={template.img} alt={template.name} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-out" />
                  
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/50 backdrop-blur-sm">
-                    <span className="text-white border-hairline px-8 py-4 font-heading text-3xl uppercase tracking-widest">Buy Now</span>
+                    <span className="relative overflow-hidden group/btn inline-flex items-center justify-center bg-white text-black px-10 py-4 font-heading text-3xl uppercase tracking-widest transition-colors duration-500 hover:text-white">
+                      <span className="absolute inset-0 bg-black translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
+                      <span className="relative z-10">Buy Now</span>
+                    </span>
                  </div>
               </div>
 

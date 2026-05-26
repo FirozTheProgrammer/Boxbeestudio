@@ -1,17 +1,25 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export const Portfolio = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeFilter, setActiveFilter] = useState('All');
 
   const projects = [
-    { id: '01', title: 'Brand Identity', client: 'Lumina Studio', category: 'Design', aspect: 'aspect-[3/4]', type: 'Brand Identity & Web' },
-    { id: '02', title: 'E-Commerce', client: 'Aura', category: 'React', aspect: 'aspect-square', type: 'Creative Engineering' },
-    { id: '03', title: 'Editorial Site', client: 'The Index', category: 'Webflow', aspect: 'aspect-[4/3]', type: 'No-Code Development' },
-    { id: '04', title: 'Portfolio', client: 'Studio N', category: 'Framer', aspect: 'aspect-[3/4]', type: 'Framer Website' },
+    { id: '01', title: 'Brand Identity', client: 'Lumina Studio', category: 'Design', aspect: 'aspect-[3/4]', type: 'Brand Identity & Web', img: '/images/ff_identity_mockup_1779810702990.png' },
+    { id: '02', title: 'E-Commerce', client: 'Aura', category: 'React', aspect: 'aspect-square', type: 'Creative Engineering', img: '/images/minimal_ecom_mockup_1779810739362.png' },
+    { id: '03', title: 'Editorial Site', client: 'The Index', category: 'Webflow', aspect: 'aspect-[4/3]', type: 'No-Code Development', img: '/images/editorial_os_mockup_1779810720630.png' },
+    { id: '04', title: 'Portfolio', client: 'Studio N', category: 'Framer', aspect: 'aspect-[3/4]', type: 'Framer Website', img: '/images/colorful_app_mockup_1779808535421.png' },
   ];
+
+  const filteredProjects = projects.filter(project => {
+    if (activeFilter === 'All') return true;
+    if (activeFilter === 'Design') return project.category === 'Design';
+    if (activeFilter === 'Dev') return project.category !== 'Design'; // React, Webflow, Framer
+    return true;
+  });
 
   useGSAP(() => {
     gsap.fromTo(
@@ -68,9 +76,24 @@ export const Portfolio = () => {
           </h2>
         </div>
         <div className="header-reveal flex gap-8 font-heading text-3xl uppercase tracking-widest text-gray-500">
-          <button className="text-white border-b-hairline pb-2 hover:text-white transition-colors">All</button>
-          <button className="hover:text-white transition-colors">Design</button>
-          <button className="hover:text-white transition-colors">Dev</button>
+          <button 
+            onClick={() => setActiveFilter('All')} 
+            className={`${activeFilter === 'All' ? 'text-white border-b-hairline pb-2' : 'hover:text-white transition-colors'}`}
+          >
+            All
+          </button>
+          <button 
+            onClick={() => setActiveFilter('Design')} 
+            className={`${activeFilter === 'Design' ? 'text-white border-b-hairline pb-2' : 'hover:text-white transition-colors'}`}
+          >
+            Design
+          </button>
+          <button 
+            onClick={() => setActiveFilter('Dev')} 
+            className={`${activeFilter === 'Dev' ? 'text-white border-b-hairline pb-2' : 'hover:text-white transition-colors'}`}
+          >
+            Dev
+          </button>
         </div>
       </header>
 
@@ -78,18 +101,18 @@ export const Portfolio = () => {
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div 
               key={project.id} 
               ref={el => { if (el) projectRefs.current[index] = el; }}
               className={`group cursor-pointer flex flex-col ${index % 2 !== 0 ? 'md:mt-48' : ''}`}
             >
               {/* Image Area */}
-              <div className={`w-full ${project.aspect} border-hairline overflow-hidden relative mb-6 bg-gray-900`}>
+              <div className={`w-full ${project.aspect} border-hairline overflow-hidden relative mb-6 bg-gray-900 group-hover:border-white transition-colors duration-500`}>
                  <img 
-                    src={index % 2 === 0 ? "/images/workspace_realistic_1779797581487.png" : "/images/app_mockup_realistic_1779797619474.png"} 
-                    alt="Portfolio preview" 
-                    className="parallax-img absolute inset-0 w-full h-[120%] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out -top-[10%]" 
+                    src={project.img} 
+                    alt={project.title} 
+                    className="parallax-img absolute inset-0 w-full h-[120%] object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 ease-out -top-[10%]" 
                  />
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/50 backdrop-blur-sm">
                     <span className="text-white border-hairline px-8 py-4 font-heading text-3xl uppercase tracking-widest">View Project</span>

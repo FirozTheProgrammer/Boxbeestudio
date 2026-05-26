@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Services = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,6 +14,23 @@ export const Services = () => {
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power2.out" }
     );
+
+    gsap.utils.toArray('.service-block').forEach((block: any) => {
+      gsap.fromTo(block,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: block,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
   }, { scope: containerRef });
 
   return (
@@ -27,10 +47,10 @@ export const Services = () => {
       {/* Services List */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24 flex flex-col">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b-hairline pb-24 mb-24">
+        <div className="service-block group grid grid-cols-1 md:grid-cols-12 gap-12 border-b-hairline pb-24 mb-24 hover:bg-white/5 transition-colors duration-500 p-8 -mx-8 rounded-2xl cursor-pointer">
           <div className="md:col-span-4">
-             <h2 className="text-2xl font-heading uppercase tracking-widest text-gray-500 mb-4">01</h2>
-             <h2 className="text-fluid-4xl font-heading uppercase text-white">Identity & Design</h2>
+             <h2 className="text-2xl font-heading uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-500 mb-4">01</h2>
+             <h2 className="text-fluid-4xl font-heading uppercase text-white group-hover:translate-x-4 transition-transform duration-500">Identity & Design</h2>
           </div>
           <div className="md:col-span-8 flex flex-col justify-start">
              <p className="text-2xl font-sans text-gray-400 font-light max-w-2xl mb-12 uppercase tracking-widest leading-relaxed">
@@ -46,10 +66,10 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b-hairline pb-24 mb-24">
+        <div className="service-block group grid grid-cols-1 md:grid-cols-12 gap-12 border-b-hairline pb-24 mb-24 hover:bg-white/5 transition-colors duration-500 p-8 -mx-8 rounded-2xl cursor-pointer">
           <div className="md:col-span-4">
-             <h2 className="text-2xl font-heading uppercase tracking-widest text-gray-500 mb-4">02</h2>
-             <h2 className="text-fluid-4xl font-heading uppercase text-white">No-Code Engineering</h2>
+             <h2 className="text-2xl font-heading uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-500 mb-4">02</h2>
+             <h2 className="text-fluid-4xl font-heading uppercase text-white group-hover:translate-x-4 transition-transform duration-500">No-Code Engineering</h2>
           </div>
           <div className="md:col-span-8 flex flex-col justify-start">
              <p className="text-2xl font-sans text-gray-400 font-light max-w-2xl mb-12 uppercase tracking-widest leading-relaxed">
@@ -65,10 +85,10 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b-hairline pb-24">
+        <div className="service-block group grid grid-cols-1 md:grid-cols-12 gap-12 border-b-hairline pb-24 hover:bg-white/5 transition-colors duration-500 p-8 -mx-8 rounded-2xl cursor-pointer">
           <div className="md:col-span-4">
-             <h2 className="text-2xl font-heading uppercase tracking-widest text-gray-500 mb-4">03</h2>
-             <h2 className="text-fluid-4xl font-heading uppercase text-white">Custom React Builds</h2>
+             <h2 className="text-2xl font-heading uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-500 mb-4">03</h2>
+             <h2 className="text-fluid-4xl font-heading uppercase text-white group-hover:translate-x-4 transition-transform duration-500">Custom React Builds</h2>
           </div>
           <div className="md:col-span-8 flex flex-col justify-start">
              <p className="text-2xl font-sans text-gray-400 font-light max-w-2xl mb-12 uppercase tracking-widest leading-relaxed">

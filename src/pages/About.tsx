@@ -6,9 +6,9 @@ export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const team = [
-    { name: 'Sarah Jenkins', role: 'Design Director', img: 'bg-gray-800' },
-    { name: 'Marcus Chen', role: 'Lead Engineer', img: 'bg-gray-700' },
-    { name: 'Elena Rostova', role: 'Art Director', img: 'bg-gray-900' },
+    { name: 'SARAH JENKINS', role: 'Design Director', img: '/images/colorful_workspace_1779808518609.png' },
+    { name: 'MARCUS CHEN', role: 'Lead Engineer', img: '/images/real_studio_app_1779795446201.png' },
+    { name: 'ELENA ROSTOVA', role: 'Art Director', img: '/images/workspace_realistic_1779797581487.png' },
   ];
 
   useGSAP(() => {
@@ -34,7 +34,7 @@ export const About = () => {
       }
     );
 
-    const teamMembers = gsap.utils.toArray('.team-member') as HTMLElement[];
+    const teamMembers = gsap.utils.toArray('.brutalist-list-item') as HTMLElement[];
     teamMembers.forEach((member) => {
       gsap.fromTo(member,
         { opacity: 0, y: 50 },
@@ -83,22 +83,32 @@ export const About = () => {
         </div>
       </section>
 
-      {/* Team Grid */}
-      <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-32">
+      {/* Team Section: Massive Interactive List */}
+      <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-32 flex flex-col">
         <div className="flex justify-between items-end mb-16 border-b-hairline pb-8">
           <h3 className="text-fluid-5xl font-heading uppercase text-white">The Team</h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {team.map((member, index) => (
-            <div key={index} className="team-member flex flex-col group cursor-pointer">
-              {/* Minimalist Portrait Placeholder */}
-              <div className={`w-full aspect-[3/4] border-hairline mb-6 overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-700 bg-gray-900`}>
-                <img src="/images/agency_interior_1779797602811.png" alt={member.name} className="absolute inset-0 w-full h-[120%] -top-[10%] object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+            <div 
+              key={index} 
+              className="brutalist-list-item flex flex-col group cursor-pointer border border-gray-800 hover:border-white transition-colors duration-500 bg-black overflow-hidden"
+            >
+              <div className="w-full aspect-[4/5] relative overflow-hidden border-b border-gray-800 group-hover:border-white transition-colors duration-500">
+                <img 
+                  src={member.img} 
+                  alt={member.name} 
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105" 
+                />
               </div>
-              <div className="flex justify-between items-baseline border-t-hairline pt-4">
-                <h4 className="text-3xl font-heading uppercase text-white group-hover:pl-4 transition-all duration-300">{member.name}</h4>
-                <p className="text-lg font-heading text-gray-500 uppercase tracking-widest">{member.role}</p>
+              <div className="p-6 flex flex-col items-center text-center">
+                <h4 className="text-3xl md:text-4xl font-heading uppercase text-white mb-2 group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_white] transition-all duration-300">
+                  {member.name}
+                </h4>
+                <p className="text-sm md:text-base font-sans uppercase tracking-[0.2em] text-gray-500">
+                  {member.role}
+                </p>
               </div>
             </div>
           ))}

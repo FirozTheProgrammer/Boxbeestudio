@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -38,11 +38,11 @@ export const Layout = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-12 font-heading text-xl uppercase tracking-widest">
-            <Link to="/services" className="link-hover">Services</Link>
-            <Link to="/templates" className="link-hover">Templates</Link>
-            <Link to="/portfolio" className="link-hover">Projects</Link>
-            <Link to="/about" className="link-hover">About</Link>
-            <Link to="/contact" className="link-hover">Contact</Link>
+            <NavLink to="/services" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Services</NavLink>
+            <NavLink to="/templates" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Store</NavLink>
+            <NavLink to="/portfolio" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Projects</NavLink>
+            <NavLink to="/about" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>About</NavLink>
+            <NavLink to="/contact" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Contact</NavLink>
           </div>
 
           {/* Mobile Toggle */}
@@ -56,17 +56,16 @@ export const Layout = () => {
           </button>
         </div>
 
-        {/* Full Screen Mobile Menu */}
         <div 
           ref={menuRef} 
           className="fixed inset-0 bg-black h-0 opacity-0 overflow-hidden flex flex-col justify-center items-center gap-8"
         >
-          <Link to="/" className="mobile-link text-5xl font-heading uppercase tracking-widest hover:text-gray-400 transition-colors">Home</Link>
-          <Link to="/services" className="mobile-link text-5xl font-heading uppercase tracking-widest hover:text-gray-400 transition-colors">Services</Link>
-          <Link to="/templates" className="mobile-link text-5xl font-heading uppercase tracking-widest hover:text-gray-400 transition-colors">Templates</Link>
-          <Link to="/portfolio" className="mobile-link text-5xl font-heading uppercase tracking-widest hover:text-gray-400 transition-colors">Projects</Link>
-          <Link to="/about" className="mobile-link text-5xl font-heading uppercase tracking-widest hover:text-gray-400 transition-colors">About</Link>
-          <Link to="/contact" className="mobile-link text-5xl font-heading uppercase tracking-widest hover:text-gray-400 transition-colors">Contact</Link>
+          <NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Home</NavLink>
+          <NavLink to="/services" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Services</NavLink>
+          <NavLink to="/templates" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Store</NavLink>
+          <NavLink to="/portfolio" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Projects</NavLink>
+          <NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>About</NavLink>
+          <NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Contact</NavLink>
         </div>
       </nav>
 
