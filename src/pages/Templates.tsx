@@ -13,10 +13,11 @@ export const Templates = () => {
     { id: 4, name: 'STUDIO PRO', type: 'Webflow', price: '$69', img: '/images/colorful_app_mockup_1779808535421.webp' },
     { id: 5, name: 'MONOCHROME', type: 'Framer', price: '$39', img: '/images/colorful_branding_1779808551322.webp' },
     { id: 6, name: 'AGENCY DARK', type: 'React', price: '$89', img: '/images/colorful_workspace_1779808518609.webp' },
+    { id: 7, name: 'DESIGN SYSTEM UI', type: 'Figma', price: '$29', img: '/images/real_studio_app_1779795446201.webp' },
   ];
 
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const categories = ['All', 'React', 'Framer', 'Webflow'];
+  const categories = ['All', 'React', 'Framer', 'Webflow', 'Figma'];
 
   const filteredTemplates = selectedCategory === 'All' 
     ? templates 
@@ -57,7 +58,7 @@ export const Templates = () => {
           Premium Templates
         </h2>
         <p className="header-reveal text-2xl font-sans text-gray-400 font-light max-w-2xl mt-12 uppercase tracking-widest leading-relaxed">
-          A collection of high-end, meticulously crafted templates for Framer, Webflow, and React. Built on robust, scalable design systems.
+          A collection of high-end, meticulously crafted templates for Framer, Webflow, React, and Figma. Built on robust, scalable design systems.
         </p>
       </header>
 
@@ -86,7 +87,7 @@ export const Templates = () => {
             <div key={template.id} ref={el => { if (el) cardRefs.current[index] = el; }} className="group cursor-pointer flex flex-col">
               {/* Minimalist Image Placeholder */}
               <div className="w-full aspect-[4/5] border-hairline mb-6 relative overflow-hidden bg-gray-900 flex items-center justify-center">
-                 <img src={template.img} alt={template.name} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-out" />
+                 <img src={template.img} alt={template.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out" />
                  
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/50 backdrop-blur-sm">
                     <span className="relative overflow-hidden group/btn inline-flex items-center justify-center bg-white text-black px-10 py-4 font-heading text-3xl uppercase tracking-widest transition-colors duration-500 hover:text-white">
