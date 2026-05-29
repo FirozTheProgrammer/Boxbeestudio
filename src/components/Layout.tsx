@@ -38,9 +38,9 @@ export const Layout = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-12 font-heading text-xl uppercase tracking-widest">
+            <NavLink to="/" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Home</NavLink>
             <NavLink to="/services" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Services</NavLink>
             <NavLink to="/templates" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Store</NavLink>
-            <NavLink to="/portfolio" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Projects</NavLink>
             <NavLink to="/about" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>About</NavLink>
             <NavLink to="/contact" className={({ isActive }) => `link-hover transition-colors ${isActive ? 'text-white' : 'text-gray-500 hover:text-white'}`}>Contact</NavLink>
           </div>
@@ -63,7 +63,6 @@ export const Layout = () => {
           <NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Home</NavLink>
           <NavLink to="/services" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Services</NavLink>
           <NavLink to="/templates" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Store</NavLink>
-          <NavLink to="/portfolio" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Projects</NavLink>
           <NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>About</NavLink>
           <NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => `mobile-link text-5xl font-heading uppercase tracking-widest transition-colors ${isActive ? 'text-white' : 'text-gray-600 hover:text-white'}`}>Contact</NavLink>
         </div>

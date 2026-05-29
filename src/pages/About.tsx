@@ -58,7 +58,7 @@ export const About = () => {
       {/* Editorial Header */}
       <header className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-32 pb-24 border-b-hairline flex flex-col">
         <h1 className="text-xl font-sans uppercase tracking-[0.2em] text-gray-500 mb-8 about-fade-hero">About Practice</h1>
-        <h2 className="text-fluid-7xl font-heading leading-[0.8] max-w-5xl text-white uppercase about-fade-hero">
+        <h2 className="text-fluid-7xl font-heading leading-[0.8] w-full text-white uppercase about-fade-hero">
           We believe in the power of restraint. Design should elevate content, not overpower it.
         </h2>
       </header>
