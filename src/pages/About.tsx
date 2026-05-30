@@ -18,6 +18,35 @@ export const About = () => {
       { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power2.out" }
     );
 
+    // Floating tags entrance & auto-move on scroll
+    gsap.fromTo([".parallax-1"], 
+      { opacity: 0, scale: 0.8, y: 50 },
+      { 
+        opacity: 1, 
+        scale: 1, 
+        y: 0, 
+        duration: 1, 
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".parallax-1",
+          start: "top 80%",
+        },
+        onComplete: () => {
+          gsap.to(".float-1", { x: 40, y: -60, yoyo: true, repeat: -1, ease: "sine.inOut", duration: 3 });
+        }
+      }
+    );
+
+    // Mouse Parallax
+    const onMouseMove = (e: MouseEvent) => {
+      const { clientX } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 100;
+      
+      gsap.to(".parallax-1", { x: x * 1.5, duration: 1, ease: "power2.out" });
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+
     gsap.fromTo(
       ".manifesto-fade",
       { opacity: 0, y: 40 },
@@ -50,17 +79,26 @@ export const About = () => {
         }
       );
     });
+
+    return () => window.removeEventListener("mousemove", onMouseMove);
   }, { scope: containerRef });
 
   return (
     <div className="w-full flex flex-col items-center pb-32" ref={containerRef}>
       
       {/* Editorial Header */}
-      <header className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-32 pb-24 border-b-hairline flex flex-col">
-        <h1 className="text-xl font-sans uppercase tracking-[0.2em] text-gray-500 mb-8 about-fade-hero">About Practice</h1>
-        <h2 className="text-fluid-7xl font-heading leading-[0.8] w-full text-white uppercase about-fade-hero">
+      <header className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-32 pb-24 border-b-hairline flex flex-col relative overflow-hidden">
+        <h1 className="text-xl font-sans uppercase tracking-[0.2em] text-gray-500 mb-8 about-fade-hero relative z-10">About Practice</h1>
+        <h2 className="text-fluid-7xl font-heading leading-[0.8] w-full text-white uppercase about-fade-hero relative z-10">
           We believe in the power of restraint. Design should elevate content, not overpower it.
         </h2>
+
+        {/* Parallax Elements */}
+        <div className="parallax-1 absolute top-[40%] right-[15%] pointer-events-none z-20 hidden md:block">
+           <div className="float-1 bg-[#FF5500] text-white px-4 py-1 text-sm md:text-base font-sans font-medium select-none uppercase tracking-widest">
+             About Us
+           </div>
+        </div>
       </header>
 
       {/* The Manifesto */}

@@ -2,6 +2,7 @@ import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { CopyEmail } from './CopyEmail';
 
 export const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,9 +79,7 @@ export const Layout = () => {
           
           <div className="md:col-span-6 flex flex-col justify-between">
             <h2 className="text-fluid-6xl font-heading leading-[0.8] uppercase mb-12">Let's Build.</h2>
-            <a href="mailto:hello@boxbee.studio" className="text-2xl font-heading uppercase tracking-widest link-hover self-start">
-              hello@boxbee.studio
-            </a>
+            <CopyEmail className="text-2xl font-heading uppercase tracking-widest link-hover self-start text-left" />
           </div>
 
           <div className="md:col-span-2 md:col-start-9 flex flex-col gap-6 font-heading text-xl uppercase tracking-widest text-gray-400">

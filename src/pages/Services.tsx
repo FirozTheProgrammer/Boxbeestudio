@@ -80,17 +80,17 @@ export const Services = () => {
         </h2>
 
         {/* Parallax Elements */}
-        <div className="parallax-1 absolute top-[20%] right-[20%] pointer-events-none z-0 hidden md:block">
+        <div className="parallax-1 absolute top-[20%] right-[20%] pointer-events-none z-20 hidden md:block">
            <div className="float-1 bg-[#0000FF] text-white px-4 py-1 text-sm md:text-base font-sans font-medium select-none uppercase tracking-widest">
              Engineering
            </div>
         </div>
-        <div className="parallax-2 absolute bottom-[20%] left-[40%] pointer-events-none z-0 hidden md:block">
+        <div className="parallax-2 absolute bottom-[20%] left-[40%] pointer-events-none z-20 hidden md:block">
            <div className="float-2 bg-[#FFFF00] text-black px-4 py-1 text-sm md:text-base font-sans font-medium select-none uppercase tracking-widest">
              Design
            </div>
         </div>
-        <div className="parallax-3 absolute top-[50%] right-[10%] pointer-events-none z-0 hidden md:block">
+        <div className="parallax-3 absolute top-[50%] right-[10%] pointer-events-none z-20 hidden md:block">
            <div className="float-3 bg-[#FF0000] text-white px-4 py-1 text-sm md:text-base font-sans font-medium select-none uppercase tracking-widest">
              Strategy
            </div>

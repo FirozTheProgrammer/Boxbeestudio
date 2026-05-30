@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { CopyEmail } from '../components/CopyEmail';
 
 export const Contact = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,9 +66,7 @@ export const Contact = () => {
             
             <div className="contact-info-fade border-b-hairline pb-8">
               <h3 className="text-xl font-heading uppercase tracking-widest text-gray-500 mb-4">New Business</h3>
-              <a href="mailto:hello@boxbee.studio" className="text-3xl md:text-5xl font-heading uppercase text-white hover:pl-4 transition-all duration-300">
-                hello@boxbee.studio
-              </a>
+              <CopyEmail className="text-3xl md:text-5xl font-heading uppercase text-white hover:pl-4 transition-all duration-300 text-left" />
             </div>
 
             <div className="contact-info-fade border-b-hairline pb-8">
